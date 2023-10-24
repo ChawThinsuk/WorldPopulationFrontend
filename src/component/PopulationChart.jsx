@@ -77,7 +77,7 @@ export function PopulationChart() {
       const worldResults = await axios.post(
         "https://zany-puce-dhole-slip.cyclic.app/country/get-total-by-year"
       );
-      let worldData = worldResults.data.results;
+      let worldData = worldResults.data.worldPopulation;
       let data = results.data.results;
       data = data.map((item, index) => {
         return {

@@ -5,7 +5,6 @@ import PopulationChart from "./component/PopulationChart";
 export function App() {
   return (
     <PopulationChart />
-    // ''
   )
 }
 export default App;

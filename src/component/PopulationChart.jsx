@@ -12,7 +12,7 @@ export function PopulationChart() {
   const [iteration, setIteration] = useState(0);
   const [state, setState] = useState();
   const [start, setStart] = useState(false);
-  const [data, setData] = useState(null);
+  const [data, setData] = useState(initialData);
   const [worldPopulationList, setWorldPopulationList] = useState([]);
   const [worldPopulation, setWorldPopulation] = useState({});
   const [loading, setLoading] = useState(false);
@@ -233,7 +233,7 @@ export function PopulationChart() {
             chartType="BarChart"
             width="100%"
             height="100%"
-            data={data || initialData}
+            data={data}
             options={options}
           />
         </div>

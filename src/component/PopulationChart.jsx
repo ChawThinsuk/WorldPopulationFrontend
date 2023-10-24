@@ -133,9 +133,9 @@ export function PopulationChart() {
     setWorldPopulation(newWorld);
   };
 
-  if (loading) {
-    return <p>Loading</p>;
-  }
+  // if (loading) {
+  //   return <p>Loading</p>;
+  // }
 
   const handleStartStopClick = () => {
     setStart(!start);
@@ -239,26 +239,37 @@ export function PopulationChart() {
         </div>
         <div className="absolute left-[900px] top-[300px]">
           <div className="flex flex-col justify-end">
-            <p className="transition-transform text-[50px] font-xl text-end text-[#787878]">
-              {worldPopulation.Year}
-            </p>
-            <p className="transition-transform text-[20px] text-[#787878]">
-              Total: {worldPopulation.Population?.toLocaleString()}
-            </p>
+            {loading ? (
+              <p>Loading...</p>
+            ) : (
+              <>
+                <p className="transition-transform text-[50px] font-xl text-end text-[#787878]">
+                  {worldPopulation.Year}
+                </p>
+                <p className="transition-transform text-[20px] text-[#787878]">
+                  Total: {worldPopulation.Population?.toLocaleString()}
+                </p>
+              </>
+            )}
           </div>
         </div>
       </div>
       <div className="flex flex-row items-center">
         <button
           onClick={handleStartStopClick}
-          className="w-[30px] h-[30px] text-center ml-[500px] mr-[40px] mt-[20px]"
+          disabled={loading}
+          className={`w-[30px] h-[30px] text-center ml-[500px] mr-[40px] mt-[20px]`}
         >
           {start ? <img src={pauseIcon} /> : <img src={playIcon} />}
         </button>
         <div className="mt-[10px]">
           <div className="flex flex-row mr-[10px] text-[11px]">
-            {arrayYearBar.map((item,index) => {
-              return <p key={index} className="mr-[20.5px]">{item}</p>;
+            {arrayYearBar.map((item, index) => {
+              return (
+                <p key={index} className="mr-[20.5px]">
+                  {item}
+                </p>
+              );
             })}
           </div>
           <div className=" h-1 w-[600px] bg-[#787878] duration-200 ml-[5px]">
@@ -291,7 +302,26 @@ function findContinent(country) {
   }
 }
 
-const initialData = [["Element","Population",{"role":"style"},{"sourceColumn":0,"role":"annotation","type":"string","calc":"stringify"}],["China",543979200,"color: #5d45ea","🇨🇳"],["India",357021120,"color: #5d45ea","🇮🇳"],["United States",148281550,"color: #fccd35","🇺🇸"],["Russia",102580110,"color: #a26ce9","🇷🇺"],["Japan",84353060,"color: #5d45ea","🇯🇵"],["Germany",70964104,"color: #a26ce9","🇩🇪"],["Indonesia",69567624,"color: #5d45ea","🇮🇩"],["Brazil",53955360,"color: #fccd35","🇧🇷"],["United Kingdom",50055068,"color: #a26ce9","🇬🇧"],["Italy",46391944,"color: #a26ce9","🇮🇹"],["France",41842356,"color: #a26ce9","🇫🇷"],["Bangladesh",39728540,"color: #5d45ea","🇧🇩"]]
+const initialData = [
+  [
+    "Element",
+    "Population",
+    { role: "style" },
+    { sourceColumn: 0, role: "annotation", type: "string", calc: "stringify" },
+  ],
+  ["China", 543979200, "color: #5d45ea", "🇨🇳"],
+  ["India", 357021120, "color: #5d45ea", "🇮🇳"],
+  ["United States", 148281550, "color: #fccd35", "🇺🇸"],
+  ["Russia", 102580110, "color: #a26ce9", "🇷🇺"],
+  ["Japan", 84353060, "color: #5d45ea", "🇯🇵"],
+  ["Germany", 70964104, "color: #a26ce9", "🇩🇪"],
+  ["Indonesia", 69567624, "color: #5d45ea", "🇮🇩"],
+  ["Brazil", 53955360, "color: #fccd35", "🇧🇷"],
+  ["United Kingdom", 50055068, "color: #a26ce9", "🇬🇧"],
+  ["Italy", 46391944, "color: #a26ce9", "🇮🇹"],
+  ["France", 41842356, "color: #a26ce9", "🇫🇷"],
+  ["Bangladesh", 39728540, "color: #5d45ea", "🇧🇩"],
+];
 const options = {
   width: 650,
   height: 550,
